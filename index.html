@@ -1,18 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Sav.pos</title>
-  <link rel="manifest" href="/manifest.json" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sav.pos 设计系统</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+    h1 { font-size: 24px; margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .card { background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .card a { text-decoration: none; color: #0066cc; font-weight: 500; display: block; }
+    .card img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 8px; }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+  <h1>📱 Sav.pos 模块总览</h1>
+  <div class="grid" id="module-list"></div>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
+    // 自动扫描并列出所有包含 code.html 的文件夹
+    const modules = [
+      "admin_dashboard",
+      "pwa",
+      "pos_checkout",
+      "staff_management",
+      "inventory_alerts",
+      "commission_hub",
+      "reconciliation_center",
+      "catalog_management",
+      "booking_confirmed",
+      "digital_receipt"
+    ];
+    const container = document.getElementById('module-list');
+    modules.forEach(mod => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<a href="/${mod}/code.html">${mod.replace(/_/g, ' ')}</a>`;
+      container.appendChild(card);
+    });
   </script>
+  <p style="margin-top: 30px; text-align: center; color: #666;">⚡ 共 293 个设计模块 | 点击查看</p>
 </body>
 </html>
