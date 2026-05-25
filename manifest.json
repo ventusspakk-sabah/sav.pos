@@ -1,0 +1,9 @@
+{
+  "name": "Sav.pos 设计系统",
+  "short_name": "Sav.pos",
+  "start_url": "/sav.pos/index.html",
+  "display": "standalone",
+  "theme_color": "#0066cc",
+  "background_color": "#f5f5f5",
+  "icons": []
+}
